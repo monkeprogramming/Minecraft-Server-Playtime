@@ -13,7 +13,7 @@ PASW = os.getenv('RCON_PASSWORD') or getpass('rcon password: ')
 
 rcon = RCONClient(HOST, port=PORT)
 ping = PINGClient(HOST, proto_num=0)
-time= time_module.localtime()
+time = time_module.localtime()
 day = time[6] + 1
 json_file = 'player_info.json'
 testtext = 'test'
@@ -22,9 +22,7 @@ with open(json_file, mode='r') as read_file:
     data = json.load(read_file)
 
 
-dict_of_players_with_time = {
-    'time': time
-}
+dict_of_players_with_time = {'time': time}
 
 stats = ping.get_stats()
 config_players = stats.get('players')
@@ -36,20 +34,13 @@ if players:
             print('seems to function')
         elif player_id is not dict_of_players_with_time:
             if day <= 5:
-                dict_of_players_with_time[player_id]={
-                    'time_left': 120
-                }
+                dict_of_players_with_time[player_id] = {'time_left': 120}
             else:
-                dict_of_players_with_time[player_id]={
-                    'time_left': 240
-                }
+                dict_of_players_with_time[player_id] = {'time_left': 240}
     print(dict_of_players_with_time)
 else:
-    dict_of_players_with_time['test']=testtext
+    dict_of_players_with_time['test'] = testtext
     print(dict_of_players_with_time)
-
- 
-
 
 
 # if rcon.login(PASW):
@@ -57,3 +48,4 @@ else:
 #     print(resp)
 #     connected = rcon.is_connected
 #     print(connected)
+
