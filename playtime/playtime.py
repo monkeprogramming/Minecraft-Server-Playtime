@@ -29,7 +29,6 @@ class PlaytimeLoop:
             stats = self.ping.get_stats()
         except IndexError as e:
             logger.warning(e)
-            raise
             return playerlist
 
         logger.info(f'Getting player info')
